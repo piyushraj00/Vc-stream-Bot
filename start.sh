@@ -1,6 +1,6 @@
 echo "Cloning Repo, Please Wait..."
-git clone -b alpha https://github.com/mrsammy07/VcVideoPlay.git /VcVideoPlay
-cd /VcVideoPlay
+git clone -b alpha https://github.com/mrsammy07/VcVideoPlayer.git /VcVideoPlayer
+cd /VcVideoPlayer
 echo "Installing Requirements..."
 pip3 install -U -r requirements.txt
 echo "Starting Bot, Please Wait..."
