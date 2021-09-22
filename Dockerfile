@@ -13,7 +13,7 @@ RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
     apt install -y nodejs && \
     npm i -g npm
 
-# Copying Requirements
+# Copy Requirements
 COPY requirements.txt /requirements.txt
 
 # Installing Requirements
