@@ -35,7 +35,7 @@ HELP_TEXT = """
 \u2022 `/getlogs` - get the ffmpeg & bot logs
 
 © **Powered By** : 
-**@TeamDeeCoDe** 👩‍💻
+**@YoutubeVideoDownloaderService** 👩‍💻
 """
 
 admin_filter=filters.create(is_admin) 
