@@ -7,14 +7,14 @@ from pyrogram.types import InlineQueryResultArticle, InputTextMessageContent, In
 
 buttons = [
             [
-                InlineKeyboardButton("Bᴏᴛ Lɪꜱᴛ", url="https://t.me/otherBotList"),
+                InlineKeyboardButton("📌 Updates Channel", url="https://t.me/YoutubeVideoDownloaderService"),
+            
+            
+                InlineKeyboardButton("👥 Support Group", url="https://t.me/VCMusicGroup")],
+                [InlineKeyboardButton("♻️ Other Bots", url="https://t.me/DeCodeSupport"),
             ],
             [
-                InlineKeyboardButton("Cʜᴀɴɴᴇʟ", url="https://t.me/DeeCodeBots"),
-                InlineKeyboardButton("Gʀᴏᴜᴘ", url="https://t.me/DeCodeSupport"),
-            ],
-            [
-                InlineKeyboardButton("Mᴀᴋᴇ Yᴏᴜʀ Oᴡɴ", url="https://heroku.com/deploy?template=https://github.com/TeamDeeCode/VcVideoPlayer/tree/alpha"),
+                InlineKeyboardButton("🔺 Creator", url="t.me/TronManTRONIC"),
             ]
          ]
 
@@ -27,11 +27,11 @@ def get_cmd(dur):
 @Client.on_inline_query()
 async def search(client, query):
     answers = []
-    if query.query == "SAMMY":
+    if query.query == "ABOUT":
         answers.append(
             InlineQueryResultArticle(
-                title="Deploy Own Vc Video Player",
-                input_message_content=InputTextMessageContent(f"{Config.REPLY_MESSAGE}\n\n<b>© Powered By : \n@TeamDeeCoDe 👩‍💻</b>", disable_web_page_preview=True),
+                title="About This Bot 🌀",
+                input_message_content=InputTextMessageContent(f"**🤖 Name : VC Streamer Bot\n\n👨‍💻 Developer : [ᴘɪʏᴜꜱʜ ʀᴀᴊ 🇮🇳](t.me/TronManTRONIC)\n\n📢 Channel : [ᴘɪʏᴜꜱʜ ᴘʀᴏᴊᴇᴄᴛꜱ™](telegram.dog/YoutubeVideoDownloaderService)\n\n👥 Group : [ᴘʀ ᴘʀᴏᴊᴇᴄᴛ ꜱᴜᴘᴘᴏʀᴛ™](telegram.dog/VCMusicGroup)\n\n📝 Language : [Python3](python.org)\n\n📚 Library : [Pyrogram](pyrogram.org)\n\n📡 Server : [Heroku](heroku.com]**", disable_web_page_preview=True),
                 reply_markup=InlineKeyboardMarkup(buttons)
                 )
             )
@@ -42,7 +42,7 @@ async def search(client, query):
         await client.answer_inline_query(
             query.id,
             results=answers,
-            switch_pm_text=("✍️ Type An Video Name !"),
+            switch_pm_text=("✍️ Type An Video Name To Search !"),
             switch_pm_parameter="help",
             cache_time=0
         )
