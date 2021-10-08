@@ -12,7 +12,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from helpers.utils import delete, download, get_admins, is_admin, get_buttons, get_link, leave_call, play, get_playlist_str, send_playlist, shuffle_playlist, start_stream, stream_from_link
 
 admin_filter=filters.create(is_admin)
-TGPIC = "https://telegra.ph/file/014ffdd6d0c8c65a91154.jpg"
+TGPIC = "https://telegra.ph/file/68d083fe7517c6369313f.jpg"
 
 
 @Client.on_message(filters.command(["stream", f"stream@{Config.BOT_USERNAME}"]) & (filters.chat(Config.CHAT_ID) | filters.private | filters.chat(Config.LOG_GROUP)))
@@ -20,7 +20,7 @@ async def add_to_playlist(_, message: Message):
     if Config.ADMIN_ONLY == "True":
         admins = await get_admins(Config.CHAT_ID)
         if message.from_user.id not in admins:
-            k=await message.reply_sticker("CAACAgUAAxkBAAEBpyZhF4R-ZbS5HUrOxI_MSQ10hQt65QACcAMAApOsoVSPUT5eqj5H0h4E")
+            k=await message.reply_sticker("CAACAgEAAxkBAAOvYWAvUNJlwNA4hlRpN3V7_I75l9YAAgMAA5UimExSgTXeyhKoJB4E")
             await delete(k)
             return
     type=""
@@ -58,7 +58,7 @@ async def add_to_playlist(_, message: Message):
                 type="query"
                 ysearch=query
         else:
-            k=await message.reply_text("❗ __**Send Me An YouTube Video Name / YouTube Video Link / Reply To Video To Play In Telegram Video Chat !**__")
+            k=await message.reply_text("🎙️ **Send Me An YouTube Video Name / YouTube Video Link / Reply To Video To Play In Telegram Video Chat !**")
             await delete(k)
             return
     user=f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
@@ -67,7 +67,7 @@ async def add_to_playlist(_, message: Message):
         nyav = now.strftime("%d-%m-%Y-%H:%M:%S")
         data={1:m_video.file_name, 2:m_video.file_id, 3:"telegram", 4:user, 5:f"{nyav}_{m_video.file_size}"}
         Config.playlist.append(data)
-        await msg.edit("➕ **Media Added To Playlist !**")
+        await msg.edit("➕ **Successfully Media Added To Playlist !**")
     if type=="youtube" or type=="query":
         if type=="youtube":
             msg = await message.reply_photo(TGPIC, caption="🔎")
@@ -81,7 +81,7 @@ async def add_to_playlist(_, message: Message):
                 title = results[0]["title"][:40]
             except Exception as e:
                 k=await msg.edit(
-                    "**Literary Found Noting !\nTry Searching On Inline Mode 😉!**"
+                    "**👥 Literary Found Noting !\nTry Searching On Inline Mode 😉!**"
                 )
                 LOGGER.error(str(e))
                 await delete(k)
@@ -130,33 +130,33 @@ async def add_to_playlist(_, message: Message):
 @Client.on_message(filters.command(["leave", f"leave@{Config.BOT_USERNAME}"]) & admin_filter & (filters.chat(Config.CHAT_ID) | filters.private | filters.chat(Config.LOG_GROUP)))
 async def leave_voice_chat(_, m: Message):
     if not Config.CALL_STATUS:
-        k=await m.reply_text("🤖 **Didn't Joined Video Chat !**")
+        k=await m.reply_text("🤖 **Didn't Joined Video Chat ! To Leave**")
         await delete(k)
         return
     await leave_call()
-    k=await m.reply_text("✅ **Left From Video Chat !**")
+    k=await m.reply_text("✅ **Successfully Left From Video Chat !**")
     await delete(k)
 
 
 @Client.on_message(filters.command(["shuffle", f"shuffle@{Config.BOT_USERNAME}"]) & admin_filter & (filters.chat(Config.CHAT_ID) | filters.private | filters.chat(Config.LOG_GROUP)))
 async def shuffle_play_list(client, m: Message):
     if not Config.CALL_STATUS:
-        k=await m.reply_text("🤖 **Didn't Joined Video Chat !**")
+        k=await m.reply_text("🤖 **Didn't Joined Video Chat To Shuffle!**")
         await delete(k)
     else:
         if len(Config.playlist) > 2:
             await shuffle_playlist()
-            k=await m.reply_text(f"🔄 **Playlist Shuffled !**")
+            k=await m.reply_text(f"🔄 **Successfully Playlist Shuffled !**")
             await delete(k)
         else:
-            k=await m.reply_text(f"⛔️ **Can't Shuffle Playlist For Less Than 3 Video !**")
+            k=await m.reply_text(f"⛔️ __**Can't Shuffle Playlist For Less Than 3 Video !**__")
             await delete(k)
 
 
 @Client.on_message(filters.command(["clear", f"clear@{Config.BOT_USERNAME}"]) & admin_filter & (filters.chat(Config.CHAT_ID) | filters.private | filters.chat(Config.LOG_GROUP)))
 async def clear_play_list(client, m: Message):
     if not Config.CALL_STATUS:
-        k=await m.reply_text("🤖 **Didn't Joined Video Chat !**")
+        k=await m.reply_text("🤖 **Didn't Joined Video Chat To Clear ! **")
         await delete(k)
         return
     if not Config.playlist:
@@ -164,7 +164,7 @@ async def clear_play_list(client, m: Message):
         await delete(k)
         return
     Config.playlist.clear()   
-    k=await m.reply_text(f"✅ **Playlist Cleared !**")
+    k=await m.reply_text(f"✅ **Successfully Playlist Cleared !**")
     await delete(k)
     await start_stream()
 
@@ -177,7 +177,7 @@ async def stream(client, m: Message):
         text = m.text.split(" ", 1)
         link = text[1]
     else:
-        k=await m.reply_text("❗ __**Send Me An Live Stream Link / YouTube Live Stream Link To Start Live Streaming !**__")
+        k=await m.reply_text("❗**Send Me An Live Stream Link / YouTube Live Stream Link To Start Live Streaming !**")
         await delete(k)
         return
     regex = r"^(?:https?:\/\/)?(?:www\.)?youtu\.?be(?:\.com)?\/?.*(?:watch|embed)?(?:.*v=|v\/|\/)([\w\-_]+)\&?"
@@ -185,7 +185,7 @@ async def stream(client, m: Message):
     if match:
         stream_link=await get_link(link)
         if not stream_link:
-            k=await m.reply_text("⛔️ **Invalid Stream Link Provided !**")
+            k=await m.reply_text("⛔️ __Invalid Stream Link Provided !__")
             await delete(k)
             return
     else:
@@ -195,7 +195,7 @@ async def stream(client, m: Message):
         s=await m.reply_text(msg)
         await delete(s)
         return
-    s=await m.reply_text(f"▶️ **Started [Live Streaming]({stream_link}) !**", disable_web_page_preview=True, reply_markup=await get_buttons())
+    s=await m.reply_text(f"▶️ **Successfully Started [Live Streaming]({stream_link}) !**", disable_web_page_preview=True, reply_markup=await get_buttons())
     await delete(s)
 
 
@@ -212,11 +212,8 @@ allcmd = ["stream", "playlist", f"stream@{Config.BOT_USERNAME}", f"playlist@{Con
 async def not_chat(_, m: Message):
     buttons = [
             [
-                InlineKeyboardButton("Cʜᴀɴɴᴇʟ", url="https://t.me/DeeCodeBots"),
-                InlineKeyboardButton("Gʀᴏᴜᴘ", url="https://t.me/DeCodeSupport"),
-            ],
-            [
-                InlineKeyboardButton("Mᴀᴋᴇ Yᴏᴜʀ Oᴡɴ", url="https://heroku.com/deploy?template=https://github.com/TeamDeeCode/VcVideoPlayer/tree/alpha"),
+                InlineKeyboardButton("📌 Updates Channel", url="https://t.me/YoutubeVideoDownloaderService")],
+                [InlineKeyboardButton("👨🏻‍💻 Support Group", url="https://t.me/VCMusicGroup"),
             ]
          ]
-    await m.reply_text(text="`Sorry, You Can't Use This Bot In This Group 🤷‍♂️! But You Can Make Your Own Bot Like This!`", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
+    await m.reply_text(text="**❗ Only Admins Can Execute This Command**", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
