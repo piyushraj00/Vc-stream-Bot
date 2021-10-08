@@ -150,18 +150,18 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data.lower() == "home":
         buttons = [
             [
-                InlineKeyboardButton("Sᴇᴀʀᴄʜ", switch_inline_query_current_chat=""),
+                InlineKeyboardButton("📌 Updates Channel", url="t.me/YoutubeVideoDownloaderService"),
+            ,
+            
+                InlineKeyboardButton("👥 Support Group", url="https://t.me/VCMusicGroup")],
+                [InlineKeyboardButton("🌀 Search Inline", switch_inline_query_current_chat="")
+            ,
+            
+                InlineKeyboardButton("🆔 Other Bots", url="https://t.me/YoutubeVideoDownloaderService/56")],
+                [InlineKeyboardButton("👨🏻‍💻 Creator", url="telegram.dog/TronManTRONIC"),
             ],
             [
-                InlineKeyboardButton("Cʜᴀɴɴᴇʟ", url="https://t.me/DeeCodeBots"),
-                InlineKeyboardButton("Gʀᴏᴜᴘ", url="https://t.me/DeCodeSupport"),
-            ],
-            [
-                InlineKeyboardButton("Bᴏᴛ Lɪꜱᴛ", url="https://t.me/otherBotList"),
-                InlineKeyboardButton("Sᴏᴜʀᴄᴇ", url="https://github.com/TeamDeeCode/VcVideoPlayer/tree/alpha"),
-            ],
-            [
-                InlineKeyboardButton("Hᴇʟᴘ & Cᴏᴍᴍᴀɴᴅꜱ", callback_data="help"),
+                InlineKeyboardButton("⁉️ Help & Commands", callback_data="help"),
             ]
             ]
         reply_markup = InlineKeyboardMarkup(buttons)
