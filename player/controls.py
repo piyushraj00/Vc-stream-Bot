@@ -66,11 +66,11 @@ async def pause_playing(_, m: Message):
         await delete(k)
         return
     if not Config.CALL_STATUS:
-        k=await m.reply_text("🤖 **Didn't Joined Video Chat !**")
+        k=await m.reply_text("🤖 **Didn't Joined Video Chat To Pause !**")
         await delete(k)
         return
     await pause()
-    k=await m.reply_text("⏸ **Paused Streaming !**")
+    k=await m.reply_text("⏸ **Successfully Paused Streaming !**")
     await delete(k)
     
 
@@ -81,11 +81,11 @@ async def resume_playing(_, m: Message):
         await delete(k)
         return
     if not Config.CALL_STATUS:
-        k=await m.reply_text("🤖 **Didn't Joined Video Chat !**")
+        k=await m.reply_text("🤖 **Didn't Joined Video Chat To Resume !**")
         await delete(k)
         return
     await resume()
-    k=await m.reply_text("▶️ **Resumed Streaming !**")
+    k=await m.reply_text("▶️ **Successfully Resumed Streaming !**")
     await delete(k)
 
 
@@ -100,18 +100,18 @@ async def set_vol(_, m: Message):
         await delete(k)
         return
     await volume(int(m.command[1]))
-    k=await m.reply_text(f"🔉 **Volume Set To {m.command[1]} !**")
+    k=await m.reply_text(f"🔉 **Successfully Volume Set To {m.command[1]} !**")
     await delete(k)
     
 
 @Client.on_message(filters.command(["replay", f"replay@{Config.BOT_USERNAME}"]) & admin_filter & (filters.chat(Config.CHAT_ID) | filters.private | filters.chat(Config.LOG_GROUP)))
 async def replay_playout(client, m: Message):
     if not Config.CALL_STATUS:
-        k=await m.reply_text("🤖 **Didn't Joined Video Chat !**")
+        k=await m.reply_text("🤖 **Didn't Joined Video Chat To Replay !**")
         await delete(k)
         return
     await restart_playout()
-    k=await m.reply_text("🔂 **Replaying Stream !**")
+    k=await m.reply_text("🔂 **Successfully Replaying Stream See On Video Chat !**")
     await delete(k)
 
 
@@ -188,7 +188,7 @@ async def show_player(client, m: Message):
 @Client.on_message(filters.command(["seek", f"seek@{Config.BOT_USERNAME}"]) & admin_filter & (filters.chat(Config.CHAT_ID) | filters.private | filters.chat(Config.LOG_GROUP)))
 async def seek_playout(client, m: Message):
     if not Config.CALL_STATUS:
-        k=await m.reply_text("🤖 **Didn't Joined Video Chat !**")
+        k=await m.reply_text("🤖 **Didn't Joined Video Chat To Seek !**")
         await delete(k)
         return
     if not (Config.playlist or Config.STREAM_LINK):
