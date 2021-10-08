@@ -8,7 +8,7 @@ from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, InputMediaDocument
 
 
-HOME_TEXT = "🎉 **Wtsup [{}](tg://user?id={})**, \n\nI Am **VcVideoPlayer**. \n`Lets Enjoy Cinematic View  of Group Video Player With Your Friends ❤️😊` \n\n**Made With 💞 By @TeamDeeCode!**"
+HOME_TEXT = "🎉 **Hai [{}](tg://user?id={})**, \n\nI Am **Meow VcVideoPlayer**. \n`Lets Enjoy Cinematic View  of Group Video Player With Your Friends ❤️😊` \n\n**Made With ❤️ By @YouTubeVideoDownloaderService**"
 HELP_TEXT = """
 🍃 --**SETTINGS**-- :
 
@@ -45,31 +45,31 @@ async def start(client, message):
     if message.chat.type == 'private':
         buttons = [
             [
-                InlineKeyboardButton("Sᴇᴀʀᴄʜ", switch_inline_query_current_chat=""),
+                InlineKeyboardButton("📌 Updates Channel", url="t.me/YoutubeVideoDownloaderService"),
+            ,
+            
+                InlineKeyboardButton("👥 Support Group", url="https://t.me/VCMusicGroup")],
+                [InlineKeyboardButton("🌀 Search Inline", switch_inline_query_current_chat="")
+            ,
+            
+                InlineKeyboardButton("🆔 Other Bots", url="https://t.me/YoutubeVideoDownloaderService/56")],
+                [InlineKeyboardButton("👨🏻‍💻 Creator", url="telegram.dog/TronManTRONIC"),
             ],
             [
-                InlineKeyboardButton("Cʜᴀɴɴᴇʟ", url="https://t.me/DeeCodeBots"),
-                InlineKeyboardButton("Gʀᴏᴜᴘ", url="https://t.me/DeCodeSupport"),
-            ],
-            [
-                InlineKeyboardButton("Bᴏᴛ Lɪꜱᴛ", url="https://t.me/otherBotList"),
-                InlineKeyboardButton("Sᴏᴜʀᴄᴇ", url="https://github.com/TeamDeeCode/VcVideoPlayer/tree/alpha"),
-            ],
-            [
-                InlineKeyboardButton("Hᴇʟᴘ & Cᴏᴍᴍᴀɴᴅꜱ", callback_data="help"),
+                InlineKeyboardButton("⁉️ Help & Commands", callback_data="help"),
             ]
             ]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_text(HOME_TEXT.format(message.from_user.first_name, message.from_user.id), reply_markup=reply_markup)
     else:
-        await message.reply_text(f"**🌟 I'm Alive 🔥**")
+        await message.reply_text(f"**Hi I'm Alive 🔥**")
 
 @Client.on_message(filters.command(["help", f"help@{Config.BOT_USERNAME}"]))
 async def show_help(client, message):
     if message.chat.type == 'private':
         buttons = [
             [
-                InlineKeyboardButton("Cʟᴏꜱᴇ", callback_data="close"),
+                InlineKeyboardButton("🚫 Close", callback_data="close"),
             ]
             ]
         reply_markup = InlineKeyboardMarkup(buttons)
