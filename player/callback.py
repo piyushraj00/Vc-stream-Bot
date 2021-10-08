@@ -21,7 +21,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await query.answer("⛔️ Empty Playlist !", show_alert=True)
             return
         await shuffle_playlist()
-        await query.answer("🔁 Shuffling !", show_alert=True)
+        await query.answer("🔁 Successfully Shuffling !", show_alert=True)
         await sleep(1)
         try:
             await query.message.edit_reply_markup(reply_markup=await get_buttons())
@@ -33,7 +33,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await query.answer("⏸ Already Paused !", show_alert=True)
         else:
             await pause()
-            await query.answer("⏸ Paused !", show_alert=True)
+            await query.answer("⏸ Successfully Paused !", show_alert=True)
             await sleep(1)
         try:
             await query.message.edit_reply_markup(reply_markup=await get_buttons())
@@ -45,7 +45,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await query.answer("▶️ Already Resumed !", show_alert=True)
         else:
             await resume()
-            await query.answer("▶️ Resumed !", show_alert=True)
+            await query.answer("▶️ Successfully Resumed !", show_alert=True)
             await sleep(1)
         try:
             await query.message.edit_reply_markup(reply_markup=await get_buttons())
@@ -57,7 +57,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await query.answer("⛔️ Empty Playlist !", show_alert=True)
         else:
             await skip()
-            await query.answer("⏭ Skipped !", show_alert=True)
+            await query.answer("⏭ Successfully Skipped !", show_alert=True)
             await sleep(1)
         if Config.playlist:
             title=f"▶️ <b>{Config.playlist[0][1]}</b>"
@@ -78,7 +78,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await query.answer("⛔️ Empty Playlist !", show_alert=True)
         else:
             await restart_playout()
-            await query.answer("🔂 Replaying !", show_alert=True)
+            await query.answer("**🔂 Successfully Replaying See On Video Chat!**", show_alert=True)
             await sleep(1)
         try:
             await query.message.edit_reply_markup(reply_markup=await get_buttons())
@@ -135,7 +135,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data.lower() == "help":
         buttons = [
             [
-                InlineKeyboardButton("Cʟᴏꜱᴇ", callback_data="close"),
+                InlineKeyboardButton("⛔ Close", callback_data="close"),
             ]
             ]
         reply_markup = InlineKeyboardMarkup(buttons)
